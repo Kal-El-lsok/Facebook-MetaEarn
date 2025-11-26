@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaEarn - Start Making Money With Facebook Today</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            border-color: #6a11cb;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.2);
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+        }
+        
+        .btn-facebook {
+            background: #1877F2;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-facebook:hover {
+            background: #166FE5;
+            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
+        }
+        
+        .btn-facebook i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+            color: #777;
+        }
+        
+        .divider::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #ddd;
+            z-index: 1;
+        }
+        
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .benefits {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+        
+        .benefits h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .benefits ul {
+            list-style-type: none;
+        }
+        
+        .benefits li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .benefits li::before {
+            content: "✓";
+            color: #6a11cb;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: #2e7d32;
+            display: none;
+        }
+        
+        .success-message i {
+            font-size: 40px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .progress-bar {
+            display: flex;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .progress-step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-weight: bold;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .progress-step.active {
+            background: #6a11cb;
+            color: white;
+        }
+        
+        .progress-step.completed {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .progress-step::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 20px;
+            height: 2px;
+            background: #e0e0e0;
+            transform: translateY(-50%);
+        }
+        
+        .progress-step:last-child::after {
+            display: none;
+        }
+        
+        .progress-step.completed::after {
+            background: #4caf50;
+        }
+        
+        .terms {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .terms a {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MetaEarn</h1>
+            <p>Start making money in just 2 simple steps</p>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-step active" id="step1">1</div>
+            <div class="progress-step" id="step2">2</div>
+        </div>
+        
+        <div class="content">
+            <!-- Page 1: Create Account -->
+            <div class="page active" id="page1">
+                <h2>Earn While You Use Facebook</h2>
+ 
+                
+                <a href="Facebook.html" class="btn btn-facebook">
+                    <i class="fab fa-facebook"></i> Continue with Facebook
+                </a>
+                
+                <div class="benefits">
+                    <h3>Why join EarnEasy?</h3>
+                    <ul>
+                        <li>Earn money by completing tasks on Facebook</li>
+                        <li>Get paid via PayPal, bank transfer, or gift cards</li>
+                        <li>Work from anywhere, anytime</li>
+                        <li>No experience required</li>
+                    </ul>
+                </div>
+                
+                <div class="terms">
+                    By creating an account, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <!-- Page 2: Connect Facebook -->
+            <div class="page" id="page2">
+                <h2>Connect Your Facebook Account</h2>
+                <p style="text-align: center; margin-bottom: 25px; color: #555;">
+                    Connect your Facebook account to unlock more earning opportunities and get personalized task recommendations.
+                </p>
+                
+                <a href="#" class="btn btn-facebook" id="connectFacebook">
+                    <i class="fab fa-facebook"></i> Connect Facebook Account
+                </a>
+                
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                
+                <button class="btn" id="skipForNow">Skip for now</button>
+                
+                <div class="benefits">
+                    <h3>Benefits of connecting Facebook:</h3>
+                    <ul>
+                        <li>Personalized earning opportunities</li>
+                        <li>Faster account verification</li>
+                        <li>Access to exclusive social media tasks</li>
+                        <li>Earn bonus for connecting</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <h3>Congratulations!</h3>
+                <p>Your account has been created successfully. You're now ready to start earning!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const createAccountForm = document.getElementById('createAccountForm');
+            const connectFacebookBtn = document.getElementById('connectFacebook');
+            const skipForNowBtn = document.getElementById('skipForNow');
+            const page1 = document.getElementById('page1');
+            const page2 = document.getElementById('page2');
+            const successMessage = document.getElementById('successMessage');
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            
+            // Handle account creation form submission
+            createAccountForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real application, you would send this data to a server
+                // For this demo, we'll just simulate account creation
+                
+                // Show page 2
+                page1.classList.remove('active');
+                page2.classList.add('active');
+                
+                // Update progress bar
+                step1.classList.remove('active');
+                step1.classList.add('completed');
+                step2.classList.add('active');
+            });
+            
+            // Handle Facebook connection
+            connectFacebookBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // In a real application, this would redirect to Facebook OAuth
+                // For this demo, we'll simulate the connection
+                
+                // Show success message
+                page2.classList.remove('active');
+                successMessage.style.display = 'block';
+                
+                // Update progress bar
+                step2.classList.remove('active');
+                step2.classList.add('completed');
+            });
+            
+            // Handle skip for now
+            skipForNowBtn.addEventListener('click', function() {
+                // Show success message
+                page2.classList.remove('active');
+                successMessage.style.display = 'block';
+                
+                // Update progress bar
+                step2.classList.remove('active');
+                step2.classList.add('completed');
+            });
+        });
+    </script>
+</body>
+</html>
